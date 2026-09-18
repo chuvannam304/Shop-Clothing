@@ -1,1 +1,27 @@
 # Shop-Clothing
+TaiKhoanController.php
+KhachHangController.php
+NhanVienController.php
+LoaiController.php
+NhanHieuController.php
+SanPhamController.php
+HinhAnhSanPhamController.php
+MauSacController.php
+SizeController.php
+SanPhamBienTheController.php
+NhaCungCapController.php
+PhieuNhapHangController.php
+ChiTietPhieuNhapHangController.php
+GioHangController.php
+ChiTietGioHangController.php
+DiaChiController.php
+PhuongThucThanhToanController.php
+TrangThaiDonHangController.php
+MaGiamGiaController.php
+HoaDonController.php
+ChiTietHoaDonController.php
+BinhLuanController.php
+DanhGiaSanPhamController.php
+LichSuDonHangController.php
+YeuThichController.php
+ThongBaoController.php
