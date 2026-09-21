@@ -14,9 +14,8 @@ class HinhAnhSanPhamController
         $this->sanPhamModel = new SanPham();
     }
 
-    // =========================
     // DANH SÁCH HÌNH ẢNH
-    // =========================
+    
     public function index()
     {
         $maSP = $_GET['sp'] ?? '';
@@ -35,14 +34,11 @@ class HinhAnhSanPhamController
 
         $title = 'Hình ảnh sản phẩm';
         $activeMenu = 'sanpham';
-        $view = __DIR__ . '/../Views/admin/product/image/index.php';
+        $view = __DIR__ . '/../Views/admin/hinhanhsanpham/index.php';
 
         require __DIR__ . '/../Views/layouts/admin.php';
     }
-
-    // =========================
     // FORM THÊM HÌNH
-    // =========================
     public function create()
     {
         $maSP = $_GET['sp'] ?? '';
@@ -50,23 +46,17 @@ class HinhAnhSanPhamController
         if ($maSP == '') {
             die('Không tìm thấy mã sản phẩm.');
         }
-
         $sanPham = $this->sanPhamModel->getById($maSP);
-
         if (!$sanPham) {
             die('Sản phẩm không tồn tại.');
         }
-
         $title = 'Thêm hình ảnh';
         $activeMenu = 'sanpham';
-        $view = __DIR__ . '/../Views/admin/product/image/create.php';
+        $view = __DIR__ . '/../Views/admin/hinhanhsanpham/create.php';
 
         require __DIR__ . '/../Views/layouts/admin.php';
     }
-
-    // =========================
     // XỬ LÝ THÊM HÌNH
-    // =========================
     public function store()
     {
         if ($_SERVER['REQUEST_METHOD'] != 'POST') {
@@ -74,7 +64,7 @@ class HinhAnhSanPhamController
         }
 
         $maSP = $_POST['MaSP'] ?? '';
-        $maHinh = trim($_POST['MaHinh'] ?? '');
+        $maHinh = $this->hinhAnhModel->generateMaHinh();
         $laAnhChinh = $_POST['LaAnhChinh'] ?? 0;
         $thuTu = $_POST['ThuTu'] ?? 1;
 
@@ -82,13 +72,6 @@ class HinhAnhSanPhamController
             die('Không tìm thấy sản phẩm.');
         }
 
-        if ($maHinh == '') {
-            die('Mã hình không được để trống.');
-        }
-
-        if ($this->hinhAnhModel->getById($maHinh)) {
-            die('Mã hình đã tồn tại.');
-        }
 
         if (!isset($_FILES['HinhAnh']) || $_FILES['HinhAnh']['error'] != 0) {
             die('Vui lòng chọn hình ảnh.');
@@ -142,9 +125,8 @@ class HinhAnhSanPhamController
         exit;
     }
 
-    // =========================
     // FORM SỬA HÌNH
-    // =========================
+    
     public function edit()
     {
         $maHinh = $_GET['id'] ?? '';
@@ -163,14 +145,13 @@ class HinhAnhSanPhamController
 
         $title = 'Sửa hình ảnh';
         $activeMenu = 'sanpham';
-        $view = __DIR__ . '/../Views/admin/product/image/edit.php';
+        $view = __DIR__ . '/../Views/admin/hinhanhsanpham/edit.php';
 
         require __DIR__ . '/../Views/layouts/admin.php';
     }
 
-    // =========================
-    // XỬ LÝ SỬA HÌNH
-    // =========================
+    // sửa hình
+    
     public function update()
     {
         if ($_SERVER['REQUEST_METHOD'] != 'POST') {

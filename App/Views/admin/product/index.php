@@ -58,7 +58,7 @@
                             <td>
                                 <div class="product-image-box">
                                     <?php if (!empty($sanPham['AnhChinh'])): ?>
-                                        <img src="uploads/products/<?= htmlspecialchars($sanPham['AnhChinh']) ?>" class="product-thumb" alt="<?= htmlspecialchars($sanPham['TenSP']) ?>">
+                                        <img src="public/uploads/products/<?= htmlspecialchars($sanPham['AnhChinh']) ?>" class="product-thumb" alt="<?= htmlspecialchars($sanPham['TenSP']) ?>">
                                     <?php else: ?>
                                         <div class="no-image"><i class="fa-regular fa-image"></i></div>
                                     <?php endif; ?>

@@ -955,3 +955,30 @@
     font-size: 13px;
     white-space: nowrap;
 }
+/* biến thể */
+/* Biến thể sản phẩm */
+.variant-color {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.color-dot {
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
+    display: inline-block;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+/* hình ảnh sp */
+.product-image-preview {
+    width: 80px !important;
+    height: 80px !important;
+    max-width: 80px;
+    max-height: 80px;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+    border: 1px solid #eee;
+}

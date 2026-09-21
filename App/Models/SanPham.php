@@ -17,13 +17,20 @@ class SanPham
     public function getAll()
     {
         $sql = "SELECT 
-                    sp.*,
-                    l.TenLoai,
-                    nh.TenNhanHieu
-                FROM {$this->table} sp
-                INNER JOIN loai l ON sp.MaLoai = l.MaLoai
-                INNER JOIN nhanhieu nh ON sp.MaNhanHieu = nh.MaNhanHieu
-                ORDER BY sp.NgayTao DESC";
+                sp.*,
+                l.TenLoai,
+                nh.TenNhanHieu,
+                (
+                    SELECT h.DuongDan
+                    FROM hinhanhsanpham h
+                    WHERE h.MaSP = sp.MaSP
+                    ORDER BY h.LaAnhChinh DESC, h.ThuTu ASC
+                    LIMIT 1
+                ) AS AnhChinh
+            FROM {$this->table} sp
+            INNER JOIN loai l ON sp.MaLoai = l.MaLoai
+            INNER JOIN nhanhieu nh ON sp.MaNhanHieu = nh.MaNhanHieu
+            ORDER BY sp.NgayTao DESC";
 
         $stmt = $this->conn->prepare($sql);
         $stmt->execute();

@@ -43,6 +43,29 @@ class HinhAnhSanPham
 
         return $stmt->fetch();
     }
+    // Tự sinh mã hình
+    public function generateMaHinh()
+    {
+        $sql = "SELECT MaHinh
+                FROM {$this->table}
+                WHERE MaHinh LIKE 'HINH%'
+                ORDER BY CAST(SUBSTRING(MaHinh, 5) AS UNSIGNED) DESC
+                LIMIT 1";
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        $hinhAnh = $stmt->fetch();
+
+        if (!$hinhAnh) {
+            return 'HINH01';
+        }
+
+        $so = (int) substr($hinhAnh['MaHinh'], 4);
+        $so++;
+
+        return 'HINH' . str_pad($so, 2, '0', STR_PAD_LEFT);
+    }
 
     // Thêm hình ảnh
     public function create($data)

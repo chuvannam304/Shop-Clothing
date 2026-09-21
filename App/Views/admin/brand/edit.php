@@ -41,7 +41,7 @@
             <label>Logo hiện tại</label>
 
             <?php if (!empty($nhanHieu['Logo'])): ?>
-                <img src="uploads/brands/<?= htmlspecialchars($nhanHieu['Logo']) ?>" class="brand-logo-edit" alt="Logo">
+                <img src="public/uploads/brands/<?= htmlspecialchars($nhanHieu['Logo']) ?>" class="brand-logo-edit" alt="Logo">
             <?php else: ?>
                 <p>Chưa có logo</p>
             <?php endif; ?>

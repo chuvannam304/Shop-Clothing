@@ -43,7 +43,7 @@
 
                             <td>
                                 <?php if (!empty($nhanHieu['Logo'])): ?>
-                                    <img src="uploads/brands/<?= htmlspecialchars($nhanHieu['Logo']) ?>" class="brand-logo" alt="<?= htmlspecialchars($nhanHieu['TenNhanHieu']) ?>">
+                                    <img src="public/uploads/brands/<?= htmlspecialchars($nhanHieu['Logo']) ?>" class="brand-logo" alt="<?= htmlspecialchars($nhanHieu['TenNhanHieu']) ?>">
                                 <?php else: ?>
                                     <span>Chưa có</span>
                                 <?php endif; ?>

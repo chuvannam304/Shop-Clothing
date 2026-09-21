@@ -150,7 +150,29 @@ class SanPhamBienThe
             ':TrangThai' => $data['TrangThai']
         ]);
     }
+    // Tự sinh mã biến thể
+    public function generateMaBienThe()
+    {
+        $sql = "SELECT MaBienThe
+            FROM {$this->table}
+            WHERE MaBienThe LIKE 'BT%'
+            ORDER BY CAST(SUBSTRING(MaBienThe, 3) AS UNSIGNED) DESC
+            LIMIT 1";
 
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        $bienThe = $stmt->fetch();
+
+        if (!$bienThe) {
+            return 'BT01';
+        }
+
+        $so = (int) substr($bienThe['MaBienThe'], 2);
+        $so++;
+
+        return 'BT' . str_pad($so, 2, '0', STR_PAD_LEFT);
+    }
     // Xóa biến thể
     public function delete($maBienThe)
     {
