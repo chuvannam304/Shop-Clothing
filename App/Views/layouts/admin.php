@@ -14,7 +14,7 @@
     <div class="admin">
 
         <div class="sidebar">
-            <div class="logo">CLOTHING SHOP</div>
+            <div class="logo">NAM SHOP</div>
 
             <ul class="menu">
 

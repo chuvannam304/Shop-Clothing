@@ -54,7 +54,25 @@ class KhachHangController
 
         require __DIR__ . '/../Views/profile/index.php';
     }
+    public function orders()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
 
+        if (!isset($_SESSION['taiKhoan'])) {
+            header('Location: index.php?controller=taikhoan&action=login');
+            exit;
+        }
+
+        $maTK = $_SESSION['taiKhoan']['MaTK'];
+
+        $khachHang = $this->khachHangModel->getByMaTK($maTK);
+
+        $title = 'Đơn Mua';
+
+        require __DIR__ . '/../Views/profile/orders.php';
+    }
     // CẬP NHẬT PROFILE
     public function updateProfile()
     {

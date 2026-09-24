@@ -1,7 +1,7 @@
 <?php
 
-$controller = $_GET['controller'] ?? 'admin';
-$action = $_GET['action'] ?? 'dashboard';
+$controller = $_GET['controller'] ?? 'home';
+$action = $_GET['action'] ?? 'index';
 
 switch ($controller) {
 
@@ -9,17 +9,14 @@ switch ($controller) {
     case 'admin':
         require_once __DIR__ . '/App/Controllers/AdminController.php';
         $controllerObject = new AdminController();
-
         switch ($action) {
             case 'dashboard':
                 $controllerObject->dashboard();
                 break;
-
             default:
                 echo 'Action Admin không tồn tại';
                 break;
         }
-
         break;
 
     // SẢN PHẨM
@@ -332,6 +329,9 @@ switch ($controller) {
 
             case 'updateProfile':
                 $controllerObject->updateProfile();
+                break;
+            case 'orders':
+                $controllerObject->orders();
                 break;
 
             default:

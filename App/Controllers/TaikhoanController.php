@@ -1,20 +1,24 @@
 <?php
 
 require_once __DIR__ . '/../Models/TaiKhoan.php';
+require_once __DIR__ . '/../Models/KhachHang.php';
 
 class TaiKhoanController
 {
     private $taiKhoanModel;
+    private $khachHangModel;
 
     public function __construct()
     {
         $this->taiKhoanModel = new TaiKhoan();
+        $this->khachHangModel = new KhachHang();
     }
 
     // FORM ĐĂNG KÝ
     public function register()
     {
         $title = 'Đăng ký';
+
         require __DIR__ . '/../Views/account/register.php';
     }
 
@@ -52,6 +56,7 @@ class TaiKhoanController
 
         if (isset($error)) {
             $title = 'Đăng ký';
+
             require __DIR__ . '/../Views/account/register.php';
             return;
         }
@@ -62,7 +67,7 @@ class TaiKhoanController
             'SoDienThoai' => $soDienThoai,
             'MatKhau' => password_hash($matKhau, PASSWORD_DEFAULT),
             'LoaiDangNhap' => 'Local',
-            'VaiTro' => 'KhachHang',
+            'VaiTro' => 0,
             'TrangThai' => 1
         ];
 
@@ -82,6 +87,7 @@ class TaiKhoanController
         }
 
         $title = 'Đăng nhập';
+
         require __DIR__ . '/../Views/account/login.php';
     }
 
@@ -104,6 +110,7 @@ class TaiKhoanController
         } elseif ($matKhau == '') {
             $error = 'Vui lòng nhập mật khẩu.';
         } else {
+
             $taiKhoan = $this->taiKhoanModel->getByLogin($login);
 
             if (!$taiKhoan) {
@@ -117,23 +124,54 @@ class TaiKhoanController
 
         if (isset($error)) {
             $title = 'Đăng nhập';
+
             require __DIR__ . '/../Views/account/login.php';
             return;
+        }
+
+        $hoTen = strstr($taiKhoan['Email'], '@', true);
+        $anhDaiDien = null;
+
+        if ($taiKhoan['VaiTro'] == 0) {
+
+            $khachHang = $this->khachHangModel->getByMaTK(
+                $taiKhoan['MaTK']
+            );
+
+            if ($khachHang) {
+
+                if (!empty($khachHang['HoTen'])) {
+                    $hoTen = $khachHang['HoTen'];
+                }
+
+                if (!empty($khachHang['AnhDaiDien'])) {
+                    $anhDaiDien = $khachHang['AnhDaiDien'];
+                }
+            }
         }
 
         $_SESSION['taiKhoan'] = [
             'MaTK' => $taiKhoan['MaTK'],
             'Email' => $taiKhoan['Email'],
             'SoDienThoai' => $taiKhoan['SoDienThoai'],
-            'VaiTro' => $taiKhoan['VaiTro']
+            'VaiTro' => $taiKhoan['VaiTro'],
+            'HoTen' => $hoTen,
+            'AnhDaiDien' => $anhDaiDien
         ];
 
-        if ($taiKhoan['VaiTro'] == 'Admin') {
-            header('Location: index.php?controller=admin&action=dashboard');
+        // ADMIN
+        if ($taiKhoan['VaiTro'] == 2) {
+
+            header(
+                'Location: index.php?controller=admin&action=dashboard'
+            );
             exit;
         }
 
-        header('Location: index.php?controller=home&action=index');
+        // KHÁCH HÀNG / NHÂN VIÊN
+        header(
+            'Location: index.php?controller=home&action=index'
+        );
         exit;
     }
 
@@ -147,7 +185,9 @@ class TaiKhoanController
         session_unset();
         session_destroy();
 
-        header('Location: index.php?controller=taikhoan&action=login');
+        header(
+            'Location: index.php?controller=home&action=index'
+        );
         exit;
     }
 }

@@ -1,3 +1,493 @@
+/* 
+   HEADER
+ */
+
+.main-header {
+    background: #ffffff;
+    border-top: 3px solid #222222;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.main-header .navbar {
+    min-height: 95px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.header-account {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #111111;
+    text-decoration: none !important;
+    margin-left: 5px;
+}
+
+.header-account:hover {
+    color: #111111;
+}
+
+.header-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #f2f2f2;
+    border: 1px solid #dddddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.header-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header-avatar i {
+    font-size: 17px;
+    color: #333333;
+}
+
+.header-account-name {
+    max-width: 130px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #222222;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.header-account:hover .header-avatar {
+    border-color: #111111;
+}
+
+.header-account:hover .header-account-name {
+    color: #666666;
+}
+
+@media (max-width: 991px) {
+    .header-account {
+        margin-left: 0;
+    }
+
+    .header-account-name {
+        max-width: 180px;
+    }
+}
+
+/* LOGO */
+
+.shop-logo {
+    font-size: 30px;
+    font-weight: 800;
+    color: #111111 !important;
+    text-decoration: none;
+    margin-right: 50px;
+}
+
+
+/* MENU */
+
+.main-menu {
+    align-items: center;
+}
+
+.main-menu .nav-item {
+    margin: 0 12px;
+}
+
+.main-menu .nav-link {
+    position: relative;
+    color: #111111 !important;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 35px 8px !important;
+    white-space: nowrap;
+}
+
+.main-menu .nav-link:hover {
+    color: #666666 !important;
+}
+
+.main-menu .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 25px;
+    width: 0;
+    height: 2px;
+    background: #111111;
+    transform: translateX(-50%);
+    transition: 0.3s;
+}
+
+.main-menu .nav-link:hover::after {
+    width: calc(100% - 16px);
+}
+
+
+/* ICON BÊN PHẢI */
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 25px;
+}
+
+.header-icon {
+    width: 40px;
+    height: 40px;
+    background: #f2f2f2;
+    color: #111111;
+    border-radius: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none !important;
+    transition: 0.2s;
+}
+
+.header-icon:hover {
+    background: #111111;
+    color: #ffffff;
+}
+
+.header-icon i {
+    font-size: 15px;
+}
+
+
+/* 
+   RESPONSIVE
+ */
+
+@media (max-width: 991px) {
+
+    .main-header .navbar {
+        min-height: 70px;
+    }
+
+    .shop-logo {
+        font-size: 26px;
+    }
+
+    .main-menu {
+        align-items: flex-start;
+        margin-top: 15px;
+    }
+
+    .main-menu .nav-item {
+        width: 100%;
+        margin: 0;
+    }
+
+    .main-menu .nav-link {
+        padding: 12px 0 !important;
+        border-bottom: 1px solid #eeeeee;
+    }
+
+    .main-menu .nav-link::after {
+        display: none;
+    }
+
+    .header-actions {
+        margin: 20px 0;
+    }
+}
+
+/*
+   FOOTER */
+
+.main-footer {
+    background: #1d1d1d;
+    color: #dddddd;
+    margin-top: 60px;
+}
+
+.footer-content {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+
+/* LOGO */
+
+.footer-logo {
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 25px;
+}
+
+
+/* TIÊU ĐỀ */
+
+.footer-column h4 {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 22px;
+}
+
+
+/* DANH SÁCH */
+
+.footer-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-list li {
+    margin-bottom: 13px;
+}
+
+.footer-list a {
+    color: #cccccc;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer-list a:hover {
+    color: #ffffff;
+}
+
+.footer-list i {
+    color: #888888;
+    font-size: 11px;
+    margin-right: 8px;
+}
+
+
+/* LIÊN HỆ */
+
+.footer-contact {
+    margin-top: 22px;
+}
+
+.footer-contact p {
+    color: #cccccc;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-contact i {
+    width: 20px;
+    color: #ffffff;
+}
+
+
+/* CỬA HÀNG */
+
+.footer-store {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+.footer-store>i {
+    color: #ffffff;
+    font-size: 25px;
+    margin-top: 3px;
+}
+
+.footer-store strong {
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.footer-store p {
+    color: #bbbbbb;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+
+.footer-store a {
+    color: #dddddd;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.footer-store a:hover {
+    color: #ffffff;
+}
+
+
+/* MẠNG XÃ HỘI */
+
+.footer-social-text {
+    color: #bbbbbb;
+    font-size: 14px;
+}
+
+.footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.footer-social a {
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid #555555;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    transition: 0.2s;
+}
+
+.footer-social a:hover {
+    background: #ffffff;
+    color: #111111;
+    border-color: #ffffff;
+}
+
+
+/* ĐĂNG KÝ EMAIL */
+
+.footer-subscribe {
+    margin-top: 30px;
+}
+
+.footer-subscribe p {
+    color: #dddddd;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.footer-subscribe .form-control {
+    height: 42px;
+    background: #333333;
+    border: 1px solid #333333;
+    color: #ffffff;
+    border-radius: 3px 0 0 3px;
+}
+
+.footer-subscribe .form-control::placeholder {
+    color: #999999;
+}
+
+.footer-subscribe .form-control:focus {
+    background: #333333;
+    color: #ffffff;
+    border-color: #666666;
+    box-shadow: none;
+}
+
+.footer-subscribe .btn {
+    height: 42px;
+    background: #ffffff;
+    color: #111111;
+    font-size: 13px;
+    font-weight: 700;
+    border-radius: 0 3px 3px 0;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.footer-subscribe .btn:hover {
+    background: #dddddd;
+}
+
+
+/*
+   FOOTER BOTTOM */
+
+.footer-bottom {
+    background: #111111;
+    border-top: 1px solid #333333;
+    padding: 25px 0;
+}
+
+.footer-bottom p {
+    color: #aaaaaa;
+    font-size: 13px;
+    margin-bottom: 5px;
+}
+
+.footer-bottom p:first-child {
+    color: #dddddd;
+}
+
+
+/* NÚT LÊN ĐẦU TRANG */
+
+.footer-back-top {
+    width: 48px;
+    height: 48px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #333333;
+    color: #ffffff;
+
+    border-radius: 50%;
+    text-decoration: none !important;
+}
+
+.footer-back-top:hover {
+    background: #ffffff;
+    color: #111111;
+}
+
+
+/*
+   RESPONSIVE FOOTER */
+
+@media (max-width: 991px) {
+
+    .footer-column {
+        margin-bottom: 35px;
+    }
+
+}
+
+
+@media (max-width: 767px) {
+
+    .footer-content {
+        padding-top: 35px;
+        padding-bottom: 20px;
+    }
+
+    .footer-column {
+        margin-bottom: 30px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+
+    .footer-back-top {
+        margin-top: 15px;
+    }
+
+}
+
+.footer-image {
+    width: 160px;
+    max-width: 100%;
+    height: auto;
+}
+
+/*  */
 .account-page {
     min-height: 100vh;
     margin: 0;
@@ -182,142 +672,231 @@
         padding: 35px 25px;
     }
 }
-/* profile */
 
+/* profile */
 .profile-page {
-    min-height: 100vh;
-    margin: 0;
-    padding: 40px 20px;
     background: #f5f5f5;
-    font-family: Arial, Helvetica, sans-serif;
+    color: #222;
 }
 
-.profile-container {
+.profile-wrapper {
+    padding: 30px 35px 50px;
+}
+
+.profile-sidebar {
+    padding-right: 20px;
+}
+
+.profile-sidebar-user {
+    display: flex;
+    align-items: center;
+    padding: 15px 0 22px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.profile-sidebar-avatar {
+    width: 58px;
+    height: 58px;
+    margin-right: 12px;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.profile-sidebar-avatar img {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-sidebar-avatar i {
+    font-size: 25px;
+    color: #aaa;
+}
+
+.profile-sidebar-user-info {
+    min-width: 0;
+}
+
+.profile-sidebar-user-info strong {
+    display: block;
+    max-width: 140px;
+    margin-bottom: 3px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.profile-sidebar-user-info a {
+    font-size: 14px;
+    color: #888;
+    text-decoration: none;
+}
+
+.profile-sidebar-user-info a:hover {
+    color: #000;
+}
+
+.profile-sidebar-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-account-toggle {
+    width: 100%;
+    padding: 10px 0;
+    border: 0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #222;
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.profile-account-toggle:focus {
+    outline: none;
+}
+
+.account-arrow {
+    margin-right: 10px;
+    font-size: 11px;
+    color: #777;
+    transition: transform .2s ease;
+}
+
+.account-arrow.open {
+    transform: rotate(180deg);
+}
+
+.profile-account-submenu {
+    display: none;
+    padding-bottom: 8px;
+}
+
+.profile-account-submenu.show {
+    display: block;
+}
+
+.profile-account-submenu a {
+    display: block;
+    padding: 7px 5px 7px 22px;
+    color: #555;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.profile-account-submenu a:hover {
+    color: #000;
+}
+
+.profile-account-submenu a.active {
+    color: #000;
+    font-weight: 600;
+}
+
+.profile-main-menu {
+    display: block;
+    padding: 10px 0;
+    color: #222;
+    font-size: 16px;
+    text-decoration: none !important;
+}
+
+.profile-main-menu:hover {
+    color: #000;
+    font-weight: 500;
+}
+
+.profile-main-menu.active {
+    color: #000;
+    font-weight: 600;
 }
 
 .profile-card {
-    width: 100%;
+    min-height: 650px;
     padding: 30px 40px 45px;
     background: #fff;
-    border: 1px solid #e5e5e5;
-    border-radius: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
 }
 
-
-/* 
-   HEADER
- */
-
 .profile-header {
-    padding-bottom: 20px;
+    padding-bottom: 22px;
+    margin-bottom: 35px;
     border-bottom: 1px solid #e5e5e5;
 }
 
 .profile-header h1 {
-    margin: 0 0 8px;
+    margin: 0 0 5px;
+    font-size: 24px;
+    font-weight: 400;
     color: #111;
-    font-size: 22px;
-    font-weight: 500;
 }
 
 .profile-header p {
     margin: 0;
-    color: #777;
     font-size: 14px;
+    color: #666;
 }
-
-
-/* 
-   THÔNG BÁO
- */
-
-.profile-card .account-message {
-    margin-top: 25px;
-}
-
-
-/* 
-   NỘI DUNG
- */
 
 .profile-content {
-    margin-top: 35px;
+    align-items: stretch;
 }
 
 .profile-form {
-    padding: 10px 55px 0 20px;
+    padding: 15px 45px 0 20px;
 }
 
 .profile-form-group {
-    min-height: 45px;
-    margin-bottom: 22px;
+    margin-bottom: 24px;
     align-items: center;
 }
 
 .profile-label {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-size: 15px;
+    color: #555;
+    text-align: right;
 }
 
-.profile-label label {
-    margin: 0;
-    color: #666;
-    font-size: 14px;
-}
-
-
-/* 
-   INPUT
- */
-
-.profile-form-group input[type="text"],
-.profile-form-group input[type="date"] {
+.profile-input {
     width: 100%;
-    height: 44px;
-    padding: 0 14px;
-    border: 1px solid #d5d5d5;
-    border-radius: 3px;
+    height: 48px;
+    padding: 0 15px;
+    border: 1px solid #ddd;
+    border-radius: 2px;
     background: #fff;
     color: #222;
-    font-size: 14px;
-    outline: none;
+    font-size: 15px;
+    box-shadow: none !important;
 }
 
-.profile-form-group input[type="text"]:focus,
-.profile-form-group input[type="date"]:focus {
-    border-color: #000;
-    box-shadow: none;
+.profile-input:focus {
+    border-color: #888;
 }
-
-.profile-form-group input::placeholder {
-    color: #aaa;
-}
-
-
-/* 
-   EMAIL + SỐ ĐIỆN THOẠI
- */
 
 .profile-info {
-    min-height: 44px;
+    min-height: 48px;
     display: flex;
     align-items: center;
+    font-size: 15px;
     color: #222;
-    font-size: 14px;
 }
 
-
-/* 
-   GIỚI TÍNH
- */
-
 .profile-gender {
-    min-height: 44px;
+    min-height: 48px;
     display: flex;
     align-items: center;
     gap: 25px;
@@ -327,52 +906,35 @@
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 7px;
-    color: #222;
-    font-size: 14px;
+    font-size: 15px;
     cursor: pointer;
 }
 
-.profile-gender input[type="radio"] {
-    width: 17px;
-    height: 17px;
-    margin: 0;
-    accent-color: #000;
-    cursor: pointer;
+.profile-gender input {
+    width: 18px;
+    height: 18px;
+    margin-right: 7px;
 }
-
-
-/* 
-   NÚT LƯU
- */
 
 .profile-save {
-    min-width: 100px;
-    height: 44px;
+    min-width: 110px;
+    height: 45px;
     padding: 0 25px;
     border: 1px solid #000;
-    border-radius: 3px;
+    border-radius: 2px;
     background: #000;
     color: #fff;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 15px;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .profile-save:hover {
-    background: #fff;
-    color: #000;
+    background: #333;
+    border-color: #333;
 }
 
-
-/* 
-   AVATAR
- */
-
 .profile-avatar {
-    min-height: 320px;
-    padding: 25px 30px;
+    min-height: 380px;
     border-left: 1px solid #e5e5e5;
     display: flex;
     flex-direction: column;
@@ -381,113 +943,449 @@
 }
 
 .profile-avatar-image {
-    width: 120px;
-    height: 120px;
+    width: 145px;
+    height: 145px;
     margin-bottom: 25px;
     border-radius: 50%;
     overflow: hidden;
-    background: #eee;
 }
 
 .profile-avatar-image img {
     width: 100%;
     height: 100%;
-    display: block;
     object-fit: cover;
 }
 
 .profile-avatar-default {
-    width: 100%;
-    height: 100%;
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
+    background: #eee;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #aaa;
-    font-size: 55px;
 }
 
-
-/* 
-   CHỌN ẢNH
- */
+.profile-avatar-default i {
+    font-size: 65px;
+    color: #aaa;
+}
 
 .profile-upload {
-    min-width: 110px;
-    height: 40px;
-    margin: 0;
-    padding: 0 18px;
-    border: 1px solid #bbb;
-    border-radius: 3px;
+    min-width: 120px;
+    padding: 10px 18px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
     background: #fff;
     color: #222;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     font-size: 14px;
+    text-align: center;
     cursor: pointer;
-    transition: 0.2s;
 }
 
 .profile-upload:hover {
+    border-color: #777;
+}
+
+.profile-avatar-note {
+    color: #999;
+    font-size: 13px;
+    text-align: center;
+}
+
+.profile-avatar-note p {
+    margin: 3px 0;
+}
+
+.account-message {
+    padding: 12px 15px;
+    margin-bottom: 25px;
+    font-size: 14px;
+}
+
+.account-message-error {
+    border: 1px solid #e0b4b4;
+    background: #fff5f5;
+    color: #b3261e;
+}
+
+.account-message-success {
+    border: 1px solid #b7d7bc;
+    background: #f5fff6;
+    color: #267333;
+}
+
+@media (max-width: 991px) {
+    .profile-wrapper {
+        padding: 20px 15px 40px;
+    }
+
+    .profile-sidebar {
+        padding-right: 10px;
+    }
+
+    .profile-card {
+        padding: 25px;
+    }
+
+    .profile-form {
+        padding: 10px 15px 0 0;
+    }
+
+    .profile-label {
+        text-align: left;
+    }
+}
+
+@media (max-width: 767px) {
+    .profile-sidebar {
+        margin-bottom: 20px;
+        padding-right: 15px;
+    }
+
+    .profile-card {
+        min-height: auto;
+        padding: 20px;
+    }
+
+    .profile-form {
+        padding: 0 15px;
+    }
+
+    .profile-label {
+        margin-bottom: 7px;
+    }
+
+    .profile-avatar {
+        min-height: auto;
+        margin-top: 20px;
+        padding: 30px 15px;
+        border-left: 0;
+        border-top: 1px solid #e5e5e5;
+    }
+
+    .profile-gender {
+        gap: 15px;
+    }
+}
+/*  */
+.order-page {
+    width: 100%;
+}
+
+.order-tabs {
+    width: 100%;
+    min-height: 65px;
+    background: #fff;
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+}
+
+.order-tabs a {
+    flex: 1;
+    min-width: 120px;
+    padding: 20px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #222;
+    font-size: 15px;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+}
+
+.order-tabs a:hover {
+    color: #000;
+    text-decoration: none;
+    border-bottom-color: #999;
+}
+
+.order-tabs a.active {
+    color: #000;
+    font-weight: 600;
+    border-bottom-color: #000;
+}
+
+.order-search {
+    width: 100%;
+    height: 55px;
+    margin-bottom: 15px;
+    padding: 0 20px;
+    background: #eee;
+    display: flex;
+    align-items: center;
+}
+
+.order-search i {
+    margin-right: 15px;
+    color: #999;
+    font-size: 20px;
+}
+
+.order-search input {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: #333;
+    font-size: 15px;
+}
+
+.order-search input::placeholder {
+    color: #888;
+}
+
+.order-list {
+    width: 100%;
+}
+
+.order-item {
+    margin-bottom: 15px;
+    background: #fff;
+    border: 1px solid #eee;
+}
+
+.order-item-header {
+    min-height: 60px;
+    padding: 0 25px;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.order-code {
+    color: #333;
+    font-size: 15px;
+}
+
+.order-code strong {
+    color: #111;
+}
+
+.order-status {
+    color: #111;
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.order-product {
+    min-height: 130px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+}
+
+.order-product-image {
+    width: 100px;
+    height: 100px;
+    margin-right: 18px;
+    border: 1px solid #eee;
+    flex-shrink: 0;
+}
+
+.order-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.order-no-image {
+    width: 100%;
+    height: 100%;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.order-no-image i {
+    color: #aaa;
+    font-size: 30px;
+}
+
+.order-product-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.order-product-info h3 {
+    margin: 0 0 7px;
+    color: #222;
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.order-product-info p {
+    margin: 0 0 5px;
+    color: #888;
+    font-size: 14px;
+}
+
+.order-product-info span {
+    color: #333;
+    font-size: 14px;
+}
+
+.order-product-price {
+    min-width: 150px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.old-price {
+    color: #999;
+    font-size: 13px;
+    text-decoration: line-through;
+}
+
+.current-price {
+    color: #111;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.order-bottom {
+    min-height: 140px;
+    padding: 20px 25px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+.order-date {
+    color: #888;
+    font-size: 13px;
+}
+
+.order-summary {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.order-total {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 15px;
+}
+
+.order-total strong {
+    margin-left: 8px;
+    color: #000;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.order-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.order-button {
+    min-width: 130px;
+    padding: 11px 20px;
+    border: 1px solid #ddd;
+    background: #fff;
+    color: #333;
+    font-size: 14px;
+    text-align: center;
+    text-decoration: none !important;
+}
+
+.order-button:hover {
+    border-color: #000;
+    color: #000;
+}
+
+.order-button-black {
     border-color: #000;
     background: #000;
     color: #fff;
 }
 
-
-/* 
-   GHI CHÚ ẢNH
- */
-
-.profile-avatar-note {
-    margin-top: 15px;
-    text-align: center;
+.order-button-black:hover {
+    background: #333;
+    color: #fff;
 }
 
-.profile-avatar-note p {
-    margin: 4px 0;
-    color: #888;
-    font-size: 13px;
+.order-empty {
+    min-height: 350px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #777;
 }
 
+.order-empty i {
+    margin-bottom: 15px;
+    color: #aaa;
+    font-size: 55px;
+}
 
-/* RESPONSIVE*/
+.order-empty p {
+    margin: 0;
+    font-size: 16px;
+}
+
+@media (max-width: 991px) {
+    .order-tabs {
+        overflow-x: auto;
+    }
+
+    .order-tabs a {
+        flex: none;
+        min-width: 140px;
+    }
+
+    .order-product-price {
+        min-width: 100px;
+    }
+}
 
 @media (max-width: 767px) {
-
-    .profile-page {
-        padding: 20px 10px;
+    .order-product {
+        align-items: flex-start;
     }
 
-    .profile-card {
-        padding: 25px 20px 35px;
+    .order-product-image {
+        width: 80px;
+        height: 80px;
     }
 
-    .profile-header h1 {
-        font-size: 20px;
+    .order-product-price {
+        min-width: auto;
+        margin-left: 10px;
     }
 
-    .profile-form {
-        padding: 30px 0 0;
+    .order-bottom {
+        align-items: stretch;
+        flex-direction: column;
     }
 
-    .profile-form-group {
-        margin-bottom: 20px;
+    .order-date {
+        margin-bottom: 15px;
     }
 
-    .profile-label {
-        margin-bottom: 8px;
-        justify-content: flex-start;
+    .order-summary {
+        align-items: stretch;
     }
 
-    .profile-avatar {
-        min-height: auto;
-        padding: 25px 0 30px;
-        border-left: none;
-        border-top: 1px solid #e5e5e5;
-    }
-
-    .profile-save {
-        width: 100%;
+    .order-actions {
+        flex-wrap: wrap;
     }
 }

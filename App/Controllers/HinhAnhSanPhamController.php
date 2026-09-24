@@ -7,7 +7,6 @@ class HinhAnhSanPhamController
 {
     private $hinhAnhModel;
     private $sanPhamModel;
-
     public function __construct()
     {
         $this->hinhAnhModel = new HinhAnhSanPham();
@@ -23,26 +22,20 @@ class HinhAnhSanPhamController
         if ($maSP == '') {
             die('Không tìm thấy mã sản phẩm.');
         }
-
         $sanPham = $this->sanPhamModel->getById($maSP);
-
         if (!$sanPham) {
             die('Sản phẩm không tồn tại.');
         }
-
         $dsHinhAnh = $this->hinhAnhModel->getBySanPham($maSP);
-
         $title = 'Hình ảnh sản phẩm';
         $activeMenu = 'sanpham';
         $view = __DIR__ . '/../Views/admin/hinhanhsanpham/index.php';
-
         require __DIR__ . '/../Views/layouts/admin.php';
     }
     // FORM THÊM HÌNH
     public function create()
     {
         $maSP = $_GET['sp'] ?? '';
-
         if ($maSP == '') {
             die('Không tìm thấy mã sản phẩm.');
         }
@@ -53,7 +46,6 @@ class HinhAnhSanPhamController
         $title = 'Thêm hình ảnh';
         $activeMenu = 'sanpham';
         $view = __DIR__ . '/../Views/admin/hinhanhsanpham/create.php';
-
         require __DIR__ . '/../Views/layouts/admin.php';
     }
     // XỬ LÝ THÊM HÌNH
@@ -62,52 +54,39 @@ class HinhAnhSanPhamController
         if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             return;
         }
-
         $maSP = $_POST['MaSP'] ?? '';
         $maHinh = $this->hinhAnhModel->generateMaHinh();
         $laAnhChinh = $_POST['LaAnhChinh'] ?? 0;
         $thuTu = $_POST['ThuTu'] ?? 1;
-
         if ($maSP == '') {
             die('Không tìm thấy sản phẩm.');
         }
 
-
         if (!isset($_FILES['HinhAnh']) || $_FILES['HinhAnh']['error'] != 0) {
             die('Vui lòng chọn hình ảnh.');
         }
-
         $extension = strtolower(
             pathinfo($_FILES['HinhAnh']['name'], PATHINFO_EXTENSION)
         );
-
         $allow = ['jpg', 'jpeg', 'png', 'webp'];
-
         if (!in_array($extension, $allow)) {
             die('Chỉ cho phép JPG, JPEG, PNG hoặc WEBP.');
         }
-
         if ($_FILES['HinhAnh']['size'] > 5 * 1024 * 1024) {
             die('Ảnh không được lớn hơn 5MB.');
         }
-
         $folder = __DIR__ . '/../../public/uploads/products/';
-
         if (!is_dir($folder)) {
             mkdir($folder, 0777, true);
         }
-
         $fileName = time() . '_' . uniqid() . '.' . $extension;
         $target = $folder . $fileName;
-
         if (!move_uploaded_file($_FILES['HinhAnh']['tmp_name'], $target)) {
             die('Không thể tải hình ảnh lên.');
         }
-
         if ($laAnhChinh == 1) {
             $this->hinhAnhModel->resetAnhChinh($maSP);
         }
-
         $data = [
             'MaHinh' => $maHinh,
             'MaSP' => $maSP,
@@ -115,38 +94,29 @@ class HinhAnhSanPhamController
             'LaAnhChinh' => $laAnhChinh,
             'ThuTu' => $thuTu
         ];
-
         $this->hinhAnhModel->create($data);
-
         header(
             'Location: index.php?controller=hinhanhsanpham&action=index&sp='
             . urlencode($maSP)
         );
         exit;
     }
-
-    // FORM SỬA HÌNH
+    // form sửa hình ảnh
     
     public function edit()
     {
         $maHinh = $_GET['id'] ?? '';
-
         if ($maHinh == '') {
             die('Không tìm thấy mã hình.');
         }
-
         $hinhAnh = $this->hinhAnhModel->getById($maHinh);
-
         if (!$hinhAnh) {
             die('Hình ảnh không tồn tại.');
         }
-
         $sanPham = $this->sanPhamModel->getById($hinhAnh['MaSP']);
-
         $title = 'Sửa hình ảnh';
         $activeMenu = 'sanpham';
         $view = __DIR__ . '/../Views/admin/hinhanhsanpham/edit.php';
-
         require __DIR__ . '/../Views/layouts/admin.php';
     }
 
@@ -157,20 +127,15 @@ class HinhAnhSanPhamController
         if ($_SERVER['REQUEST_METHOD'] != 'POST') {
             return;
         }
-
         $maHinh = $_POST['MaHinh'] ?? '';
-
         $hinhAnhCu = $this->hinhAnhModel->getById($maHinh);
-
         if (!$hinhAnhCu) {
             die('Hình ảnh không tồn tại.');
         }
-
         $maSP = $hinhAnhCu['MaSP'];
         $duongDan = $hinhAnhCu['DuongDan'];
         $laAnhChinh = $_POST['LaAnhChinh'] ?? 0;
         $thuTu = $_POST['ThuTu'] ?? 1;
-
         // Nếu chọn ảnh mới
         if (
             isset($_FILES['HinhAnh']) &&
@@ -179,52 +144,38 @@ class HinhAnhSanPhamController
             $extension = strtolower(
                 pathinfo($_FILES['HinhAnh']['name'], PATHINFO_EXTENSION)
             );
-
             $allow = ['jpg', 'jpeg', 'png', 'webp'];
-
             if (!in_array($extension, $allow)) {
                 die('Chỉ cho phép JPG, JPEG, PNG hoặc WEBP.');
             }
-
             if ($_FILES['HinhAnh']['size'] > 5 * 1024 * 1024) {
                 die('Ảnh không được lớn hơn 5MB.');
             }
-
             $folder = __DIR__ . '/../../public/uploads/products/';
-
             if (!is_dir($folder)) {
                 mkdir($folder, 0777, true);
             }
-
             $fileName = time() . '_' . uniqid() . '.' . $extension;
             $target = $folder . $fileName;
-
             if (!move_uploaded_file($_FILES['HinhAnh']['tmp_name'], $target)) {
                 die('Không thể tải hình ảnh lên.');
             }
-
             $fileCu = $folder . $duongDan;
-
             if (file_exists($fileCu)) {
                 unlink($fileCu);
             }
-
             $duongDan = $fileName;
         }
-
         if ($laAnhChinh == 1) {
             $this->hinhAnhModel->resetAnhChinh($maSP);
         }
-
         $data = [
             'MaHinh' => $maHinh,
             'DuongDan' => $duongDan,
             'LaAnhChinh' => $laAnhChinh,
             'ThuTu' => $thuTu
         ];
-
         $this->hinhAnhModel->update($data);
-
         header(
             'Location: index.php?controller=hinhanhsanpham&action=index&sp='
             . urlencode($maSP)
@@ -232,9 +183,7 @@ class HinhAnhSanPhamController
         exit;
     }
 
-    // =========================
-    // XÓA HÌNH
-    // =========================
+    // Xóa hinh 
     public function delete()
     {
         $maHinh = $_GET['id'] ?? '';
