@@ -27,23 +27,19 @@
                 </li>
 
                 <li class="<?= ($activeMenu ?? '') == 'hoadon' ? 'active' : '' ?>">
-                    <a href="#"><i class="fa-solid fa-cart-shopping"></i> Đơn hàng</a>
-                    <!-- <a href="index.php?controller=hoadon&action=index"><i class="fa-solid fa-cart-shopping"></i> Đơn hàng</a> -->
+                    <a href="index.php?controller=hoadon&action=index"><i class="fa-solid fa-cart-shopping"></i> Đơn hàng</a>
                 </li>
 
                 <li class="<?= ($activeMenu ?? '') == 'khachhang' ? 'active' : '' ?>">
-                    <!-- <a href="index.php?controller=khachhang&action=index"><i class="fa-solid fa-users"></i> Khách hàng</a> -->
-                    <a href="#"><i class="fa-solid fa-users"></i> Khách hàng</a>
+                    <a href="index.php?controller=khachhang&action=index"><i class="fa-solid fa-users"></i> Khách hàng</a>
                 </li>
 
                 <li class="<?= ($activeMenu ?? '') == 'magiamgia' ? 'active' : '' ?>">
-                    <a href="#"><i class="fa-solid fa-ticket"></i> Mã giảm giá</a>
-                    <!-- <a href="index.php?controller=magiamgia&action=index"><i class="fa-solid fa-ticket"></i> Mã giảm giá</a> -->
+                    <a href="index.php?controller=magiamgia&action=index"><i class="fa-solid fa-ticket"></i> Mã giảm giá</a>
                 </li>
 
                 <li class="<?= ($activeMenu ?? '') == 'nhacungcap' ? 'active' : '' ?>">
-                    <a href="#"><i class="fa-solid fa-truck"></i> Nhà cung cấp</a>
-               <!-- <a href="index.php?controller=nhacungcap&action=index"><i class="fa-solid fa-truck"></i> Nhà cung cấp</a> -->
+                    <a href="index.php?controller=nhacungcap&action=index"><i class="fa-solid fa-truck"></i> Nhà cung cấp</a>
                 </li>
 
                 <li class="<?= ($activeMenu ?? '') == 'phieunhap' ? 'active' : '' ?>">
@@ -51,18 +47,15 @@
                     <a href="#"><i class="fa-solid fa-boxes-stacked"></i> Nhập hàng</a>
                 </li>
                 <li class="<?= ($activeMenu ?? '') == 'taikhoan' ? 'active' : '' ?>">
-                    <a href="#"><i class="fa-solid fa-user-gear"></i> Tài khoản</a>
-                    <!-- <a href="index.php?controller=taikhoan&action=index"><i class="fa-solid fa-user-gear"></i> Tài khoản</a> -->
+                    <a href="index.php?controller=taikhoan&action=index"><i class="fa-solid fa-user-gear"></i> Tài khoản</a>
                 </li>
 
                 <li class="<?= ($activeMenu ?? '') == 'phanhoi' ? 'active' : '' ?>">
-                    <a href="#"><i class="fa-solid fa-comments"></i> Đánh giá & Bình luận</a>
-                    <!-- <a href="index.php?controller=phanhoi&action=index"><i class="fa-solid fa-comments"></i> Đánh giá & Bình luận</a> -->
+                    <a href="index.php?controller=phanhoi&action=index"><i class="fa-solid fa-comments"></i> Đánh giá & Bình luận</a>
                 </li>
 
                 <li class="<?= ($activeMenu ?? '') == 'thongbao' ? 'active' : '' ?>">
-                    <a href="#"><i class="fa-solid fa-bell"></i> Thông báo</a>
-                    <!-- <a href="index.php?controller=thongbao&action=index"><i class="fa-solid fa-bell"></i> Thông báo</a> -->
+                    <a href="index.php?controller=thongbao&action=index"><i class="fa-solid fa-bell"></i> Thông báo</a>
                 </li>
 
             </ul>

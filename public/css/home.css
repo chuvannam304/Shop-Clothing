@@ -1069,6 +1069,7 @@
         gap: 15px;
     }
 }
+
 /*  */
 .order-page {
     width: 100%;
@@ -1388,4 +1389,50 @@
     .order-actions {
         flex-wrap: wrap;
     }
+}
+
+/* icon */
+.namshop-benefits{
+    margin-top: 10px;
+}
+.namshop-benefit-card {
+    min-height: 100px;
+    padding: 15px;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.namshop-benefit-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #111;
+    border-radius: 50%;
+}
+
+.namshop-benefit-icon i {
+    color: #fff;
+    font-size: 19px;
+}
+
+.namshop-benefit-card h5 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #111;
+    white-space: nowrap;
 }

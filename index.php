@@ -357,6 +357,35 @@ switch ($controller) {
         }
 
         break;
+    // HÓA ĐƠN - ĐƠN HÀNG
+
+    case 'hoadon':
+        require_once __DIR__ . '/App/Controllers/HoaDonController.php';
+        $controllerObject = new HoaDonController();
+
+        switch ($action) {
+            case 'index':
+                $controllerObject->index();
+                break;
+
+            case 'detail':
+                $controllerObject->detail();
+                break;
+
+            case 'updateStatus':
+                $controllerObject->updateStatus();
+                break;
+
+            case 'updatePayment':
+                $controllerObject->updatePayment();
+                break;
+
+            default:
+                echo 'Action Đơn hàng không tồn tại';
+                break;
+        }
+
+        break;
     // KHÔNG TỒN TẠI
 
     default:
