@@ -309,20 +309,38 @@ switch ($controller) {
             case 'logout':
                 $controllerObject->logout();
                 break;
+            // ADMIN
+            case 'index':
+                $controllerObject->index();
+                break;
 
+            case 'detail':
+                $controllerObject->detail();
+                break;
+
+            case 'changeStatus':
+                $controllerObject->changeStatus();
+                break;
+
+            case 'changeRole':
+                $controllerObject->changeRole();
+                break;
             default:
                 echo 'Action Tài khoản không tồn tại';
                 break;
         }
 
         break;
-    // KHÁCH HÀNG - PROFILE
+    // KHÁCH HÀNG
     case 'khachhang':
         require_once __DIR__ . '/App/Controllers/KhachHangController.php';
 
         $controllerObject = new KhachHangController();
 
         switch ($action) {
+
+            //  KHÁCH HÀNG 
+
             case 'profile':
                 $controllerObject->profile();
                 break;
@@ -330,8 +348,21 @@ switch ($controller) {
             case 'updateProfile':
                 $controllerObject->updateProfile();
                 break;
+
             case 'orders':
                 $controllerObject->orders();
+                break;
+            // ADMIN - QUẢN LÝ KHÁCH HÀNG
+            case 'index':
+                $controllerObject->index();
+                break;
+
+            case 'detail':
+                $controllerObject->detail();
+                break;
+
+            case 'changeStatus':
+                $controllerObject->changeStatus();
                 break;
 
             default:
@@ -340,7 +371,8 @@ switch ($controller) {
         }
 
         break;
-    // 
+
+    //
     case 'home':
         require_once __DIR__ . '/App/Controllers/HomeController.php';
 

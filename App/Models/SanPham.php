@@ -37,7 +37,32 @@ class SanPham
 
         return $stmt->fetchAll();
     }
+    //
+    public function getHomeProducts()
+    {
+        $sql = "SELECT
+                sp.MaSP,
+                sp.TenSP,
+                MIN(bt.GiaBan) AS GiaBan,
+                (
+                    SELECT ha.DuongDan
+                    FROM hinhanhsanpham ha
+                    WHERE ha.MaSP = sp.MaSP
+                    ORDER BY ha.LaAnhChinh DESC, ha.ThuTu ASC
+                    LIMIT 1
+                ) AS HinhAnh
+            FROM sanpham sp
+            INNER JOIN sanphambienthe bt ON sp.MaSP = bt.MaSP
+            WHERE sp.TrangThai = 1
+              AND bt.TrangThai = 1
+            GROUP BY sp.MaSP, sp.TenSP
+            ORDER BY sp.NgayTao DESC";
 
+        $stmt = $this->conn->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll();
+    }
     // Lấy sản phẩm theo mã
     public function getById($maSP)
     {

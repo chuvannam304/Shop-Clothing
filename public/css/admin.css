@@ -1570,3 +1570,702 @@
     color: #000;
     text-decoration: none;
 }
+/* tai khoan */
+/*   ADMIN - QUẢN LÝ KHÁCH HÀNG*/
+
+.admin-page {
+    width: 100%;
+}
+
+.admin-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.admin-page-header h2 {
+    margin: 0 0 5px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #222;
+}
+
+.admin-page-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+
+/*   DANH SÁCH KHÁCH HÀNG*/
+
+.admin-card {
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.admin-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+.admin-table thead {
+    background: #f7f7f7;
+}
+
+.admin-table th {
+    padding: 14px 16px;
+    border-bottom: 1px solid #e5e5e5;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+
+    text-align: left;
+    white-space: nowrap;
+}
+
+.admin-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #eee;
+
+    font-size: 14px;
+    color: #333;
+    vertical-align: middle;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background: #fafafa;
+}
+
+
+/*   AVATAR + TÊN KHÁCH HÀNG*/
+
+.customer-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 160px;
+}
+
+.customer-avatar {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+
+    background: #f5f5f5;
+    color: #777;
+}
+
+.customer-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.customer-avatar i {
+    font-size: 17px;
+}
+
+.customer-info span {
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+}
+
+
+/*   TRẠNG THÁI*/
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 85px;
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+.status-active {
+    background: #e8f7ed;
+    color: #238636;
+}
+
+.status-locked {
+    background: #fdeaea;
+    color: #d93025;
+}
+
+
+/*   NÚT THAO TÁC*/
+
+.admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.admin-actions form {
+    margin: 0;
+}
+
+.action-btn {
+    width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    background: #fff;
+    color: #444;
+
+    font-size: 13px;
+    text-decoration: none;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.action-btn:hover {
+    text-decoration: none;
+}
+
+.action-view:hover {
+    background: #111;
+    border-color: #111;
+    color: #fff;
+}
+
+.action-lock:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+.action-unlock:hover {
+    background: #198754;
+    border-color: #198754;
+    color: #fff;
+}
+
+.admin-empty {
+    padding: 35px !important;
+    text-align: center !important;
+    color: #888 !important;
+}
+
+
+/*   CHI TIẾT KHÁCH HÀNG*/
+
+.customer-detail-card {
+    width: 100%;
+
+    background: #fff;
+    border: 1px solid #e9e9e9;
+    border-radius: 8px;
+
+    overflow: hidden;
+}
+
+
+/* PHẦN ĐẦU */
+
+.customer-detail-top {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+
+    padding: 25px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.customer-detail-avatar {
+    width: 85px;
+    height: 85px;
+    min-width: 85px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e5e5;
+    border-radius: 50%;
+
+    background: #f5f5f5;
+    color: #777;
+}
+
+.customer-detail-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.customer-detail-avatar i {
+    font-size: 32px;
+}
+
+.customer-detail-name h3 {
+    margin: 0 0 8px;
+
+    font-size: 21px;
+    font-weight: 600;
+    color: #222;
+}
+
+.customer-detail-name > span {
+    margin-right: 8px;
+}
+
+
+/*   THÔNG TIN CHI TIẾT*/
+
+.customer-detail-body {
+    padding: 25px;
+}
+
+.customer-detail-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+
+    padding: 17px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.customer-detail-row:first-child {
+    padding-top: 0;
+}
+
+.customer-detail-row:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.customer-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.customer-detail-item label {
+    margin: 0;
+
+    font-size: 13px;
+    font-weight: 500;
+    color: #888;
+}
+
+.customer-detail-item span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #222;
+
+    word-break: break-word;
+}
+
+
+/*   FOOTER CHI TIẾT*/
+
+.customer-detail-footer {
+    display: flex;
+    justify-content: flex-end;
+
+    padding: 18px 25px;
+
+    border-top: 1px solid #eee;
+    background: #fafafa;
+}
+
+.customer-detail-footer form {
+    margin: 0;
+}
+
+.customer-lock-btn,
+.customer-unlock-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    padding: 9px 16px;
+
+    border: none;
+    border-radius: 5px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.customer-lock-btn {
+    background: #dc3545;
+    color: #fff;
+}
+
+.customer-lock-btn:hover {
+    background: #bd2130;
+}
+
+.customer-unlock-btn {
+    background: #198754;
+    color: #fff;
+}
+
+.customer-unlock-btn:hover {
+    background: #157347;
+}
+
+
+/*   NÚT QUAY LẠI*/
+
+.admin-page-header .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 14px;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    background: #fff;
+    color: #333;
+
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.admin-page-header .btn-secondary:hover {
+    background: #111;
+    border-color: #111;
+    color: #fff;
+}
+
+
+/*   RESPONSIVE*/
+
+@media (max-width: 768px) {
+
+    .admin-page-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .customer-detail-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .customer-detail-top {
+        align-items: flex-start;
+    }
+
+    .customer-detail-avatar {
+        width: 70px;
+        height: 70px;
+        min-width: 70px;
+    }
+
+    .customer-detail-body {
+        padding: 20px;
+    }
+
+    .customer-detail-footer {
+        padding: 15px 20px;
+    }
+}
+/* tai khoan */
+/*   ADMIN - QUẢN LÝ TÀI KHOẢN*/
+
+.admin-page {
+    width: 100%;
+}
+
+.admin-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.admin-page-header h2 {
+    margin: 0 0 5px;
+    font-size: 24px;
+    font-weight: 600;
+    color: #222;
+}
+
+.admin-page-header p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+
+/*   KHUNG BẢNG*/
+
+.admin-card {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.admin-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+
+/*   BẢNG TÀI KHOẢN*/
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0;
+}
+
+.admin-table thead {
+    background: #f7f7f7;
+}
+
+.admin-table th {
+    padding: 14px 15px;
+
+    font-size: 13px;
+    font-weight: 600;
+    color: #444;
+
+    text-align: left;
+    white-space: nowrap;
+
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.admin-table td {
+    padding: 14px 15px;
+
+    font-size: 14px;
+    color: #333;
+
+    vertical-align: middle;
+
+    border-bottom: 1px solid #eeeeee;
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.admin-table tbody tr:hover {
+    background: #fafafa;
+}
+
+
+/*   VAI TRÒ*/
+
+.role-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 90px;
+    padding: 5px 11px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+/* ADMIN */
+
+.role-admin {
+    background: #eee8ff;
+    color: #6842c2;
+}
+
+/* KHÁCH HÀNG */
+
+.role-customer {
+    background: #eaf2ff;
+    color: #2864b7;
+}
+
+
+/*   TRẠNG THÁI*/
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 85px;
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    white-space: nowrap;
+}
+
+.status-active {
+    background: #e8f7ed;
+    color: #238636;
+}
+
+.status-locked {
+    background: #fdeaea;
+    color: #d93025;
+}
+
+
+/*   THAO TÁC*/
+
+.admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.admin-actions form {
+    margin: 0;
+}
+
+.action-btn {
+    width: 34px;
+    height: 34px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid #ddd;
+    border-radius: 5px;
+
+    background: #fff;
+    color: #444;
+
+    font-size: 13px;
+
+    cursor: pointer;
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+
+/* XEM */
+
+.action-view:hover {
+    background: #111;
+    border-color: #111;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* KHÓA */
+
+.action-lock:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+}
+
+
+/* MỞ KHÓA */
+
+.action-unlock:hover {
+    background: #198754;
+    border-color: #198754;
+    color: #fff;
+}
+
+
+/*   KHÔNG CÓ DỮ LIỆU*/
+
+.admin-empty {
+    padding: 40px !important;
+
+    text-align: center !important;
+
+    color: #888 !important;
+    font-size: 14px;
+}
+
+
+/*   RESPONSIVE*/
+
+@media (max-width: 1200px) {
+
+    .admin-table {
+        min-width: 1000px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .admin-page-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .admin-page-header h2 {
+        font-size: 21px;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        padding: 12px;
+    }
+}

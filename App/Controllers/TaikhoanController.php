@@ -190,4 +190,140 @@ class TaiKhoanController
         );
         exit;
     }
+    // KIỂM TRA ADMIN
+    private function checkAdmin()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['taiKhoan'])) {
+            header('Location: index.php?controller=taikhoan&action=login');
+            exit;
+        }
+
+        if ((int) ($_SESSION['taiKhoan']['VaiTro'] ?? 0) !== 2) {
+            header('Location: index.php?controller=home&action=index');
+            exit;
+        }
+    }
+
+
+    // ADMIN - DANH SÁCH TÀI KHOẢN
+    public function index()
+    {
+        $this->checkAdmin();
+
+        $taiKhoans = $this->taiKhoanModel->getAll();
+
+        $title = 'Quản lý tài khoản';
+        $activeMenu = 'taikhoan';
+
+        $view = __DIR__ . '/../Views/admin/taikhoan/index.php';
+
+        require __DIR__ . '/../Views/layouts/admin.php';
+    }
+
+
+    // ADMIN - CHI TIẾT TÀI KHOẢN
+    public function detail()
+    {
+        $this->checkAdmin();
+
+        $maTK = $_GET['id'] ?? '';
+
+        if ($maTK == '') {
+            header('Location: index.php?controller=taikhoan&action=index');
+            exit;
+        }
+
+        $taiKhoan = $this->taiKhoanModel->getById($maTK);
+
+        if (!$taiKhoan) {
+            header('Location: index.php?controller=taikhoan&action=index');
+            exit;
+        }
+
+        $title = 'Chi tiết tài khoản';
+        $activeMenu = 'taikhoan';
+
+        $view = __DIR__ . '/../Views/admin/taikhoan/detail.php';
+
+        require __DIR__ . '/../Views/layouts/admin.php';
+    }
+
+
+    // ADMIN - KHÓA / MỞ KHÓA TÀI KHOẢN
+    public function changeStatus()
+    {
+        $this->checkAdmin();
+
+        if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+            header('Location: index.php?controller=taikhoan&action=index');
+            exit;
+        }
+
+        $maTK = $_POST['MaTK'] ?? '';
+        $trangThai = isset($_POST['TrangThai'])
+            ? (int) $_POST['TrangThai']
+            : -1;
+
+        if ($maTK == '' || !in_array($trangThai, [0, 1], true)) {
+            header('Location: index.php?controller=taikhoan&action=index');
+            exit;
+        }
+
+        // Không cho Admin tự khóa chính mình
+        if ($maTK == ($_SESSION['taiKhoan']['MaTK'] ?? '')) {
+            header('Location: index.php?controller=taikhoan&action=index');
+            exit;
+        }
+
+        $this->taiKhoanModel->updateTrangThai($maTK, $trangThai);
+
+        header('Location: index.php?controller=taikhoan&action=index');
+        exit;
+    }
+
+
+    // ADMIN - THAY ĐỔI VAI TRÒ
+    public function changeRole()
+    {
+        $this->checkAdmin();
+
+        if ($_SERVER['REQUEST_METHOD'] != 'POST') {
+            header('Location: index.php?controller=taikhoan&action=index');
+            exit;
+        }
+
+        $maTK = $_POST['MaTK'] ?? '';
+        $vaiTro = isset($_POST['VaiTro'])
+            ? (int) $_POST['VaiTro']
+            : -1;
+
+        // Chỉ cho phép Khách hàng hoặc Nhân viên
+        if ($maTK == '' || !in_array($vaiTro, [0, 1], true)) {
+            header('Location: index.php?controller=taikhoan&action=index');
+            exit;
+        }
+
+        // Không được thay đổi quyền của chính Admin đang đăng nhập
+        if ($maTK == ($_SESSION['taiKhoan']['MaTK'] ?? '')) {
+            header('Location: index.php?controller=taikhoan&action=index');
+            exit;
+        }
+
+        $taiKhoan = $this->taiKhoanModel->getById($maTK);
+
+        // Không cho thay đổi tài khoản Admin khác
+        if (!$taiKhoan || (int) $taiKhoan['VaiTro'] === 2) {
+            header('Location: index.php?controller=taikhoan&action=index');
+            exit;
+        }
+
+        $this->taiKhoanModel->updateVaiTro($maTK, $vaiTro);
+
+        header('Location: index.php?controller=taikhoan&action=index');
+        exit;
+    }
 }
