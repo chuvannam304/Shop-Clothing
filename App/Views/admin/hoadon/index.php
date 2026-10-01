@@ -99,11 +99,30 @@
                                 </td>
 
                                 <td>
-                                    <a href="index.php?controller=hoadon&action=detail&id=<?= urlencode($hoaDon['MaHD']) ?>"
-                                        class="btn-order-detail">
-                                        <i class="fa-regular fa-eye"></i>
-                                        Xem
-                                    </a>
+
+                                    <div class="order-admin-actions">
+
+                                        <a href="index.php?controller=hoadon&action=detail&id=<?= urlencode($hoaDon['MaHD']) ?>" class="btn-order-detail">
+                                            <i class="fa-regular fa-eye"></i>
+                                            Xem
+                                        </a>
+
+                                        <?php if (($hoaDon['MaTrangThai'] ?? '') == 'TT01'): ?>
+
+                                            <form action="index.php?controller=hoadon&action=updateStatus" method="POST">
+                                                <input type="hidden" name="MaHD" value="<?= htmlspecialchars($hoaDon['MaHD']) ?>">
+                                                <input type="hidden" name="MaTrangThai" value="TT02">
+
+                                                <button type="submit" class="btn-order-confirm">
+                                                    <i class="fa-solid fa-check"></i>
+                                                    Xác nhận
+                                                </button>
+                                            </form>
+
+                                        <?php endif; ?>
+
+                                    </div>
+
                                 </td>
 
                             </tr>

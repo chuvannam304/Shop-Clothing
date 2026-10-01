@@ -15,17 +15,31 @@ class ChiTietHoaDon
 
     public function getByMaHD($maHD)
     {
-        $sql = "SELECT ct.*, sp.TenSP, sp.HinhAnhChinh, bt.MaSKU,
-                       ms.TenMau, s.TenSize
-                FROM {$this->table} ct
-                INNER JOIN SanPhamBienThe bt ON ct.MaBienThe = bt.MaBienThe
-                INNER JOIN SanPham sp ON bt.MaSP = sp.MaSP
-                INNER JOIN MauSac ms ON bt.MaMau = ms.MaMau
-                INNER JOIN Size s ON bt.MaSize = s.MaSize
-                WHERE ct.MaHD = :MaHD";
+        $sql = "SELECT ct.*,
+                   sp.MaSP,
+                   sp.TenSP,
+                   ms.TenMau,
+                   s.TenSize,
+                   bt.MaSKU,
+                   (
+                       SELECT ha.DuongDan
+                       FROM HinhAnhSanPham ha
+                       WHERE ha.MaSP = sp.MaSP
+                       ORDER BY ha.LaAnhChinh DESC, ha.ThuTu ASC
+                       LIMIT 1
+                   ) AS HinhAnhChinh
+            FROM ChiTietHoaDon ct
+            INNER JOIN SanPhamBienThe bt ON ct.MaBienThe = bt.MaBienThe
+            INNER JOIN SanPham sp ON bt.MaSP = sp.MaSP
+            INNER JOIN MauSac ms ON bt.MaMau = ms.MaMau
+            INNER JOIN Size s ON bt.MaSize = s.MaSize
+            WHERE ct.MaHD = :MaHD";
 
         $stmt = $this->conn->prepare($sql);
-        $stmt->execute([':MaHD' => $maHD]);
+
+        $stmt->execute([
+            ':MaHD' => $maHD
+        ]);
 
         return $stmt->fetchAll();
     }

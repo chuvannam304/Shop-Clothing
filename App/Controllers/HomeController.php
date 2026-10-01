@@ -19,7 +19,8 @@ class HomeController
 
         $title = 'Trang chủ';
 
-        $sanPhams = $this->sanPhamModel->getHomeProducts();
+        $sanPhamAo = $this->sanPhamModel->getByCategoryName('Áo');
+        $sanPhamQuan = $this->sanPhamModel->getByCategoryName('Quần');
 
         require __DIR__ . '/../Views/home/index.php';
     }

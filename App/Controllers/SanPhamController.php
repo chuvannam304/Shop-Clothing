@@ -28,7 +28,15 @@ class SanPhamController
 
         require __DIR__ . '/../Views/layouts/admin.php';
     }
+    // TẤT CẢ SẢN PHẨM - PHÍA KHÁCH HÀNG
+    public function all()
+    {
+        $sanPhams = $this->sanPhamModel->getHomeProducts();
 
+        $title = 'Tất cả sản phẩm';
+
+        require __DIR__ . '/../Views/product/index.php';
+    }
     // FORM THÊM SẢN PHẨM
     public function create()
     {
@@ -152,6 +160,44 @@ class SanPhamController
         header('Location: index.php?controller=sanpham&action=index');
         exit;
     }
+    // chi tiết sản phẩm
+    public function detail()
+    {
+        $maSP = $_GET['id'] ?? '';
+
+        if ($maSP == '') {
+            header('Location: index.php?controller=home&action=index');
+            exit;
+        }
+
+        // Lấy thông tin sản phẩm
+        $sanPham = $this->sanPhamModel->getById($maSP);
+
+        if (!$sanPham) {
+            header('Location: index.php?controller=home&action=index');
+            exit;
+        }
+
+        // Lấy hình ảnh
+        $hinhAnhs = $this->sanPhamModel->getImages($maSP);
+
+        // Lấy biến thể
+        $bienThes = $this->sanPhamModel->getVariants($maSP);
+
+        // Lấy biến thể đầu tiên làm mặc định
+        $bienTheMacDinh = !empty($bienThes) ? $bienThes[0] : null;
+
+        // Lấy sản phẩm cùng loại
+        $sanPhamCungLoai = $this->sanPhamModel->getRelatedProducts(
+            $maSP,
+            $sanPham['MaLoai']
+        );
+
+        $title = $sanPham['TenSP'];
+
+        require __DIR__ . '/../Views/product/detail.php';
+    }
+
 
     // XÓA SẢN PHẨM
 

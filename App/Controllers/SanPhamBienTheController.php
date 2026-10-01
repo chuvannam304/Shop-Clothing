@@ -240,6 +240,7 @@ class SanPhamBienTheController
         header('Location: index.php?controller=sanphambienthe&action=index&sp=' . urlencode($data['MaSP']));
         exit;
     }
+  
 
     // XÓA BIẾN THỂ
     public function delete()

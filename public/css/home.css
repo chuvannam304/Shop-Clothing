@@ -1,7 +1,9 @@
 /* 
    HEADER
  */
-
+.container {
+    max-width: 1300px;
+}
 .main-header {
     background: #ffffff;
     border-top: 3px solid #222222;
@@ -489,13 +491,13 @@
 
 /*  */
 .account-page {
-    min-height: 100vh;
-    margin: 0;
+    width: 100%;
+    min-height: 550px;
     background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 30px 15px;
+    padding: 50px 15px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -672,6 +674,7 @@
         padding: 35px 25px;
     }
 }
+
 /* show sản phẩm */
 .home-products {
     padding: 25px 0 50px;
@@ -852,6 +855,41 @@
         display: none;
     }
 }
+
+.home-products {
+    margin-top: 35px;
+    margin-bottom: 45px;
+}
+
+.home-product-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.home-product-heading h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #222;
+}
+
+.home-product-heading a {
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.home-product-heading a:hover {
+    color: #000;
+}
+
+.home-product-heading a i {
+    margin-left: 5px;
+    font-size: 12px;
+}
+
 /* profile */
 .profile-page {
     background: #f5f5f5;
@@ -1571,9 +1609,10 @@
 }
 
 /* icon */
-.namshop-benefits{
+.namshop-benefits {
     margin-top: 10px;
 }
+
 .namshop-benefit-card {
     min-height: 100px;
     padding: 15px;
@@ -1614,4 +1653,90 @@
     font-weight: 500;
     color: #111;
     white-space: nowrap;
+}
+/* ==============================
+   GIỎ HÀNG - BADGE SỐ LƯỢNG
+============================== */
+
+.header-cart {
+    position: relative;
+}
+
+/* Số lượng sản phẩm trên icon giỏ hàng */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+
+    min-width: 20px;
+    height: 20px;
+    padding: 0 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e53935;
+    color: #fff;
+
+    border: 2px solid #fff;
+    border-radius: 50%;
+
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 1;
+
+    z-index: 10;
+}
+
+/* Trường hợp số từ 10 trở lên */
+.cart-badge:not(:empty) {
+    border-radius: 10px;
+}
+
+/* Hiệu ứng khi vừa thêm sản phẩm */
+.header-cart.cart-added {
+    animation: cartShake 0.45s ease;
+}
+
+.cart-badge.badge-added {
+    animation: badgePop 0.45s ease;
+}
+
+@keyframes cartShake {
+
+    0% {
+        transform: scale(1);
+    }
+
+    25% {
+        transform: scale(1.15) rotate(-8deg);
+    }
+
+    50% {
+        transform: scale(1.2) rotate(8deg);
+    }
+
+    75% {
+        transform: scale(1.1) rotate(-4deg);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes badgePop {
+
+    0% {
+        transform: scale(0.5);
+    }
+
+    50% {
+        transform: scale(1.35);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

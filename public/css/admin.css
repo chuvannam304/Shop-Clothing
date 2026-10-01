@@ -10,9 +10,8 @@
             background: #f5f6fa;
         }
 
-        /* =========================
-            ADMIN
-        ========================== */
+        /*            ADMIN
+     */
 
         .admin {
             display: flex;
@@ -20,9 +19,8 @@
         }
 
 
-        /* =========================
-            SIDEBAR
-        ========================== */
+        /*            SIDEBAR
+     */
 
         .sidebar {
 
@@ -122,9 +120,8 @@
         }
 
 
-        /* =========================
-            MAIN
-        ========================== */
+        /*            MAIN
+     */
 
         .main {
 
@@ -137,9 +134,8 @@
         }
 
 
-        /* =========================
-            HEADER
-        ========================== */
+        /*            HEADER
+     */
 
         .header {
 
@@ -205,9 +201,8 @@
         }
 
 
-        /* =========================
-            CONTENT
-        ========================== */
+        /*            CONTENT
+     */
 
         .content {
 
@@ -243,9 +238,8 @@
         }
 
 
-        /* =========================
-            STATISTIC CARDS
-        ========================== */
+        /*            STATISTIC CARDS
+     */
 
         .statistics {
 
@@ -328,9 +322,8 @@
         }
 
 
-        /* =========================
-            CARD
-        ========================== */
+        /*            CARD
+     */
 
         .card {
 
@@ -370,9 +363,8 @@
         }
 
 
-        /* =========================
-            QUICK MENU
-        ========================== */
+        /*            QUICK MENU
+     */
 
         .quick-menu {
 
@@ -436,9 +428,8 @@
         }
 
 
-        /* =========================
-            TABLE
-        ========================== */
+        /*            TABLE
+     */
 
         table {
 
@@ -497,9 +488,8 @@
         }
 
 
-        /* =========================
-            RESPONSIVE
-        ========================== */
+        /*            RESPONSIVE
+     */
 
         @media (max-width: 1100px) {
 
@@ -588,9 +578,7 @@
         }
 
     
-/* =========================
-   PAGE TITLE
-========================= */
+/*   PAGE TITLE*/
 
 .page-title {
     display: flex;
@@ -612,9 +600,7 @@
 }
 
 
-/* =========================
-   BUTTON
-========================= */
+/*   BUTTON*/
 
 .btn {
     display: inline-flex;
@@ -648,9 +634,7 @@
 }
 
 
-/* =========================
-   PRODUCT TOOLS
-========================= */
+/*   PRODUCT TOOLS*/
 
 .product-tools {
     display: flex;
@@ -660,9 +644,7 @@
 }
 
 
-/* =========================
-   CARD
-========================= */
+/*   CARD*/
 
 .card {
     background: #fff;
@@ -682,9 +664,7 @@
 }
 
 
-/* =========================
-   TABLE
-========================= */
+/*   TABLE*/
 
 .table-responsive {
     width: 100%;
@@ -718,9 +698,7 @@
 }
 
 
-/* =========================
-   STATUS
-========================= */
+/*   STATUS*/
 
 .status {
     display: inline-block;
@@ -741,9 +719,7 @@
 }
 
 
-/* =========================
-   ACTION BUTTON
-========================= */
+/*   ACTION BUTTON*/
 
 .action-buttons,
 .manage-actions {
@@ -784,9 +760,7 @@
 }
 
 
-/* =========================
-   EMPTY
-========================= */
+/*   EMPTY*/
 
 .empty-data {
     text-align: center;
@@ -2268,4 +2242,35 @@
     .admin-table td {
         padding: 12px;
     }
+}
+/* order */
+.order-admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.order-admin-actions form {
+    margin: 0;
+}
+
+.btn-order-confirm {
+    padding: 8px 12px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    background: #111;
+    color: #fff;
+
+    border: 1px solid #111;
+    border-radius: 5px;
+
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.btn-order-confirm:hover {
+    background: #333;
 }

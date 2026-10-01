@@ -1,20 +1,23 @@
 <?php
 
+$currentController = $_GET['controller'] ?? 'khachhang';
 $currentAction = $_GET['action'] ?? 'profile';
 
 $accountActions = [
     'profile',
     'bank',
-    'address',
     'changePassword',
     'notificationSettings',
     'privacy',
     'personalInfo'
 ];
 
-$openAccountMenu = in_array($currentAction, $accountActions);
+$openAccountMenu =
+    $currentController === 'diachi' ||
+    in_array($currentAction, $accountActions);
 
 ?>
+
 
 <div class="profile-sidebar">
 
@@ -44,59 +47,31 @@ $openAccountMenu = in_array($currentAction, $accountActions);
         </button>
 
         <div class="profile-account-submenu <?= $openAccountMenu ? 'show' : '' ?>" id="accountSubmenu">
-
-            <a href="index.php?controller=khachhang&action=profile" class="<?= $currentAction == 'profile' ? 'active' : '' ?>">
-                Hồ Sơ
-            </a>
-
-            <a href="index.php?controller=khachhang&action=bank" class="<?= $currentAction == 'bank' ? 'active' : '' ?>">
-                Ngân Hàng
-            </a>
-
-            <a href="index.php?controller=khachhang&action=address" class="<?= $currentAction == 'address' ? 'active' : '' ?>">
-                Địa Chỉ
-            </a>
-
-            <a href="index.php?controller=khachhang&action=changePassword" class="<?= $currentAction == 'changePassword' ? 'active' : '' ?>">
-                Đổi Mật Khẩu
-            </a>
-
-            <a href="index.php?controller=khachhang&action=notificationSettings" class="<?= $currentAction == 'notificationSettings' ? 'active' : '' ?>">
-                Cài Đặt Thông Báo
-            </a>
-
-            <a href="index.php?controller=khachhang&action=privacy" class="<?= $currentAction == 'privacy' ? 'active' : '' ?>">
-                Những Thiết Lập Riêng Tư
-            </a>
-
-            <a href="index.php?controller=khachhang&action=personalInfo" class="<?= $currentAction == 'personalInfo' ? 'active' : '' ?>">
-                Thông Tin Cá Nhân
-            </a>
-
+            <a href="index.php?controller=khachhang&action=profile" class="<?= $currentAction == 'profile' ? 'active' : '' ?>">Hồ Sơ</a>
+            <a href="index.php?controller=khachhang&action=bank" class="<?= $currentAction == 'bank' ? 'active' : '' ?>">Ngân Hàng</a>
+            <a href="index.php?controller=diachi&action=index" class="<?= $currentController === 'diachi' ? 'active' : '' ?>">Địa Chỉ</a>
+            <a href="index.php?controller=khachhang&action=changePassword" class="<?= $currentAction == 'changePassword' ? 'active' : '' ?>">Đổi Mật Khẩu</a>
+            <a href="index.php?controller=khachhang&action=notificationSettings" class="<?= $currentAction == 'notificationSettings' ? 'active' : '' ?>">Cài Đặt Thông Báo</a>
+            <a href="index.php?controller=khachhang&action=privacy" class="<?= $currentAction == 'privacy' ? 'active' : '' ?>">Những Thiết Lập Riêng Tư</a>
+            <a href="index.php?controller=khachhang&action=personalInfo" class="<?= $currentAction == 'personalInfo' ? 'active' : '' ?>">Thông Tin Cá Nhân</a>
         </div>
 
         <a href="index.php?controller=khachhang&action=orders" class="profile-main-menu <?= $currentAction == 'orders' ? 'active' : '' ?>">
             Đơn Mua
         </a>
-
         <a href="#" class="profile-main-menu">
             Kho Voucher
         </a>
-
         <a href="#" class="profile-main-menu">
             Thông Báo
         </a>
-
         <a href="index.php?controller=home&action=index" class="profile-main-menu">
             Trang Chủ
         </a>
-
         <a href="index.php?controller=taikhoan&action=logout" class="profile-main-menu">
             Đăng Xuất
         </a>
-
     </div>
-
 </div>
 
 <script>

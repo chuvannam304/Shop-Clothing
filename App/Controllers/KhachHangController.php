@@ -1,11 +1,12 @@
 <?php
 
 require_once __DIR__ . '/../Models/KhachHang.php';
+require_once __DIR__ . '/../Models/HoaDon.php';
 
 class KhachHangController
 {
     private $khachHangModel;
-
+    private $hoaDonModel;
     public function __construct()
     {
         if (session_status() === PHP_SESSION_NONE) {
@@ -13,6 +14,7 @@ class KhachHangController
         }
 
         $this->khachHangModel = new KhachHang();
+        $this->hoaDonModel = new HoaDon();
     }
 
     // KIỂM TRA ĐĂNG NHẬP
@@ -68,13 +70,40 @@ class KhachHangController
     // ĐƠN MUA
     public function orders()
     {
-        $this->checkLogin();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (empty($_SESSION['taiKhoan']['MaTK'])) {
+            header('Location: index.php?controller=taikhoan&action=login');
+            exit;
+        }
 
         $maTK = $_SESSION['taiKhoan']['MaTK'];
 
         $khachHang = $this->khachHangModel->getByMaTK($maTK);
 
-        $title = 'Đơn Mua';
+        if (!$khachHang) {
+            header('Location: index.php?controller=khachhang&action=profile');
+            exit;
+        }
+
+        $status = trim($_GET['status'] ?? 'all');
+        $keyword = trim($_GET['keyword'] ?? '');
+
+        $donHangs = $this->hoaDonModel->getByMaKH(
+            $khachHang['MaKH'],
+            $status,
+            $keyword
+        );
+
+        foreach ($donHangs as &$donHang) {
+            $donHang['ChiTiet'] = $this->hoaDonModel->getChiTiet($donHang['MaHD']);
+        }
+
+        unset($donHang);
+
+        $title = 'Đơn Mua - NamShop';
 
         require __DIR__ . '/../Views/profile/orders.php';
     }
@@ -132,11 +161,9 @@ class KhachHangController
             if ($_FILES['AnhDaiDien']['error'] != UPLOAD_ERR_OK) {
 
                 $error = 'Có lỗi xảy ra khi tải ảnh.';
-
             } elseif ($_FILES['AnhDaiDien']['size'] > 1024 * 1024) {
 
                 $error = 'Ảnh đại diện không được vượt quá 1MB.';
-
             } else {
 
                 $fileInfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -156,7 +183,6 @@ class KhachHangController
                 if (!isset($allowedTypes[$mimeType])) {
 
                     $error = 'Ảnh đại diện chỉ hỗ trợ JPEG hoặc PNG.';
-
                 } else {
 
                     $uploadDir = __DIR__ . '/../../public/uploads/avatars/';
@@ -187,7 +213,6 @@ class KhachHangController
                         }
 
                         $anhDaiDien = $fileName;
-
                     } else {
 
                         $error = 'Không thể lưu ảnh đại diện.';
@@ -223,9 +248,9 @@ class KhachHangController
         require __DIR__ . '/../Views/profile/index.php';
     }
 
-    
+
     // ADMIN - DANH SÁCH KHÁCH HÀNG
-    
+
     public function index()
     {
         $this->checkAdmin();
@@ -239,9 +264,9 @@ class KhachHangController
         require __DIR__ . '/../Views/layouts/admin.php';
     }
 
-    
+
     // ADMIN - XEM CHI TIẾT KHÁCH HÀNG
-    
+
     public function detail()
     {
         $this->checkAdmin();
@@ -267,9 +292,9 @@ class KhachHangController
         require __DIR__ . '/../Views/layouts/admin.php';
     }
 
-    
+
     // ADMIN - KHÓA / MỞ KHÓA KHÁCH HÀNG
-    
+
     public function changeStatus()
     {
         $this->checkAdmin();

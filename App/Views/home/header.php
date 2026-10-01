@@ -5,7 +5,30 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 ?>
+<?php
 
+$cartCount = 0;
+
+if (isset($_SESSION['taiKhoan']['MaTK'])) {
+
+    require_once __DIR__ . '/../../Models/KhachHang.php';
+    require_once __DIR__ . '/../../Models/GioHang.php';
+
+    $headerKhachHangModel = new KhachHang();
+    $headerGioHangModel = new GioHang();
+
+    $headerKhachHang = $headerKhachHangModel->getByMaTK(
+        $_SESSION['taiKhoan']['MaTK']
+    );
+
+    if ($headerKhachHang) {
+        $cartCount = $headerGioHangModel->countCartItems(
+            $headerKhachHang['MaKH']
+        );
+    }
+}
+
+?>
 <header class="main-header">
 
     <div class="container">
@@ -58,13 +81,16 @@ if (session_status() === PHP_SESSION_NONE) {
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </a>
 
-                    <a href="#" class="header-icon" title="Giỏ hàng">
+                    <a href="index.php?controller=giohang&action=index" class="header-icon header-cart" id="headerCart" title="Giỏ hàng">
                         <i class="fa-solid fa-cart-shopping"></i>
-                    </a>
 
+                        <?php if ($cartCount > 0): ?>
+                            <span class="cart-badge" id="cartBadge"><?= $cartCount > 99 ? '99+' : $cartCount ?></span>
+                        <?php endif; ?>
+                    </a>
                     <?php if (isset($_SESSION['taiKhoan'])): ?>
 
-                        <a href="index.php?controller=khachhang&action=profile"
+                        <a href="index.php?controller=khachhang&action=orders"
                             class="header-account">
 
                             <div class="header-avatar">

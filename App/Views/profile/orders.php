@@ -13,7 +13,7 @@
 </head>
 
 <body class="profile-page">
-
+    <?php require __DIR__ . '/../home/header.php'; ?>
     <div class="container-fluid profile-wrapper">
         <div class="row">
             <div class="col-lg-2 col-md-3">
@@ -24,19 +24,46 @@
                 <div class="order-page">
 
                     <div class="order-tabs">
-                        <a href="#" class="active">Tất cả</a>
-                        <a href="#">Chờ thanh toán</a>
-                        <a href="#">Vận chuyển</a>
-                        <a href="#">Chờ giao hàng</a>
-                        <a href="#">Hoàn thành</a>
-                        <a href="#">Đã hủy</a>
-                        <a href="#">Trả hàng/Hoàn tiền</a>
+
+                        <a href="index.php?controller=khachhang&action=orders&status=all" class="<?= ($status ?? 'all') == 'all' ? 'active' : '' ?>">
+                            Tất cả
+                        </a>
+
+                        <a href="index.php?controller=khachhang&action=orders&status=cho-thanh-toan" class="<?= ($status ?? '') == 'cho-thanh-toan' ? 'active' : '' ?>">
+                            Chờ thanh toán
+                        </a>
+
+                        <a href="index.php?controller=khachhang&action=orders&status=van-chuyen" class="<?= ($status ?? '') == 'van-chuyen' ? 'active' : '' ?>">
+                            Vận chuyển
+                        </a>
+
+                        <a href="index.php?controller=khachhang&action=orders&status=cho-giao-hang" class="<?= ($status ?? '') == 'cho-giao-hang' ? 'active' : '' ?>">
+                            Chờ giao hàng
+                        </a>
+
+                        <a href="index.php?controller=khachhang&action=orders&status=hoan-thanh" class="<?= ($status ?? '') == 'hoan-thanh' ? 'active' : '' ?>">
+                            Hoàn thành
+                        </a>
+
+                        <a href="index.php?controller=khachhang&action=orders&status=da-huy" class="<?= ($status ?? '') == 'da-huy' ? 'active' : '' ?>">
+                            Đã hủy
+                        </a>
+
+                        <a href="index.php?controller=khachhang&action=orders&status=hoan-tien" class="<?= ($status ?? '') == 'hoan-tien' ? 'active' : '' ?>">
+                            Trả hàng/Hoàn tiền
+                        </a>
+
                     </div>
 
-                    <div class="order-search">
+                    <form action="index.php" method="GET" class="order-search">
+                        <input type="hidden" name="controller" value="khachhang">
+                        <input type="hidden" name="action" value="orders">
+                        <input type="hidden" name="status" value="<?= htmlspecialchars($status ?? 'all') ?>">
+
                         <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" placeholder="Bạn có thể tìm kiếm theo mã đơn hàng hoặc tên sản phẩm">
-                    </div>
+
+                        <input type="text" name="keyword" value="<?= htmlspecialchars($keyword ?? '') ?>" placeholder="Bạn có thể tìm kiếm theo mã đơn hàng hoặc tên sản phẩm">
+                    </form>
 
                     <div class="order-list">
 
@@ -49,11 +76,11 @@
                                     <div class="order-item-header">
                                         <div class="order-code">
                                             Đơn hàng:
-                                            <strong><?= htmlspecialchars($donHang['MaDonHang']) ?></strong>
+                                            <strong><?= htmlspecialchars($donHang['MaHD']) ?></strong>
                                         </div>
 
                                         <div class="order-status">
-                                            <?= htmlspecialchars($donHang['TrangThai']) ?>
+                                            <?= htmlspecialchars($donHang['TenTrangThai']) ?>
                                         </div>
                                     </div>
 
@@ -133,7 +160,7 @@
             </div>
         </div>
     </div>
-
+    <?php require __DIR__ . '/../home/footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 

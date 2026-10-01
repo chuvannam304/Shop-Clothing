@@ -1,0 +1,440 @@
+/* ========================================
+   ĐỊA CHỈ CỦA TÔI
+======================================== */
+
+.address-page {
+    background: #fff;
+    padding: 30px;
+    min-height: 500px;
+}
+
+.address-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.address-header h2 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+}
+
+.address-header p {
+    margin: 0;
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* NÚT THÊM ĐỊA CHỈ */
+
+.btn-add-address {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 11px 18px;
+    background: #111;
+    border: 1px solid #111;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.btn-add-address:hover {
+    background: #333;
+    border-color: #333;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* ========================================
+   DANH SÁCH ĐỊA CHỈ
+======================================== */
+
+.address-list {
+    width: 100%;
+}
+
+.address-card {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 25px 5px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.address-card:last-child {
+    border-bottom: none;
+}
+
+.address-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.address-name-phone {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.address-name-phone strong {
+    font-size: 15px;
+    font-weight: 600;
+    color: #222;
+}
+
+.address-name-phone > span:first-of-type {
+    width: 1px;
+    height: 18px;
+    background: #dddddd;
+}
+
+.address-name-phone > span:last-child {
+    font-size: 13px;
+    color: #777;
+}
+
+
+/* NỘI DUNG ĐỊA CHỈ */
+
+.address-detail {
+    margin-bottom: 10px;
+}
+
+.address-detail p {
+    margin: 3px 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #666;
+}
+
+
+/* NHÃN MẶC ĐỊNH */
+
+.default-address-label {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 4px 10px;
+    border: 1px solid #111;
+    color: #111;
+    font-size: 11px;
+}
+
+
+/* ========================================
+   THAO TÁC ĐỊA CHỈ
+======================================== */
+
+.address-actions {
+    min-width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 9px;
+}
+
+.address-actions a {
+    color: #222;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.address-actions a:hover {
+    text-decoration: underline;
+}
+
+.address-actions form {
+    margin: 0;
+}
+
+.btn-set-default,
+.btn-delete-address {
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-set-default {
+    color: #555;
+}
+
+.btn-set-default:hover {
+    color: #111;
+    text-decoration: underline;
+}
+
+.btn-delete-address {
+    color: #dc3545;
+}
+
+.btn-delete-address:hover {
+    text-decoration: underline;
+}
+
+
+/* ========================================
+   CHƯA CÓ ĐỊA CHỈ
+======================================== */
+
+.empty-address {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.empty-address > i {
+    margin-bottom: 18px;
+    color: #bcbcbc;
+    font-size: 55px;
+}
+
+.empty-address h3 {
+    margin: 0 0 10px;
+    font-size: 19px;
+    font-weight: 600;
+    color: #222;
+}
+
+.empty-address p {
+    margin-bottom: 22px;
+    color: #777;
+    font-size: 13px;
+}
+
+.empty-address > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 150px;
+    height: 43px;
+    padding: 0 20px;
+    background: #111;
+    color: #fff;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+.empty-address > a:hover {
+    background: #333;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+/* ========================================
+   FORM THÊM / SỬA ĐỊA CHỈ
+======================================== */
+
+.address-form-page {
+    max-width: 750px;
+    padding: 30px;
+    background: #fff;
+}
+
+.address-form-header {
+    padding-bottom: 18px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.address-form-header h2 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+}
+
+.address-form-header p {
+    margin: 0;
+    color: #777;
+    font-size: 13px;
+}
+
+.address-form-page .form-group {
+    margin-bottom: 20px;
+}
+
+.address-form-page .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.address-form-page .required {
+    color: #dc3545;
+}
+
+.address-form-page .form-control {
+    width: 100%;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid #dddddd;
+    border-radius: 0;
+    background: #fff;
+    color: #333;
+    font-size: 13px;
+    box-shadow: none;
+    transition: border-color 0.2s;
+}
+
+.address-form-page textarea.form-control {
+    min-height: 90px;
+    resize: vertical;
+}
+
+.address-form-page .form-control:focus {
+    border-color: #333;
+    outline: none;
+    box-shadow: none;
+}
+
+.address-form-page .form-control::placeholder {
+    color: #aaaaaa;
+}
+
+
+/* CHECKBOX MẶC ĐỊNH */
+
+.address-default-option {
+    margin: 5px 0 25px;
+}
+
+.address-default-option label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0;
+    color: #444;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.address-default-option input {
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+}
+
+
+/* ========================================
+   NÚT FORM
+======================================== */
+
+.address-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    padding-top: 20px;
+    border-top: 1px solid #eeeeee;
+}
+
+.btn-address-cancel,
+.btn-address-save {
+    min-width: 110px;
+    height: 43px;
+    padding: 0 20px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.btn-address-cancel {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #dddddd;
+    background: #fff;
+    color: #444;
+    text-decoration: none;
+}
+
+.btn-address-cancel:hover {
+    border-color: #999;
+    color: #111;
+    text-decoration: none;
+}
+
+.btn-address-save {
+    border: 1px solid #111;
+    background: #111;
+    color: #fff;
+}
+
+.btn-address-save:hover {
+    background: #333;
+    border-color: #333;
+}
+
+
+/* ========================================
+   THÔNG BÁO
+======================================== */
+
+.address-page .alert,
+.address-form-page .alert {
+    margin-bottom: 20px;
+    border-radius: 0;
+    font-size: 13px;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 767px) {
+
+    .address-page,
+    .address-form-page {
+        padding: 20px;
+    }
+
+    .address-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .address-card {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .address-actions {
+        width: 100%;
+        min-width: 0;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .address-name-phone {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .address-form-actions {
+        justify-content: stretch;
+    }
+
+    .btn-address-cancel,
+    .btn-address-save {
+        flex: 1;
+    }
+}

@@ -48,7 +48,12 @@ switch ($controller) {
             case 'delete':
                 $controllerObject->delete();
                 break;
-
+            case 'detail':
+                $controllerObject->detail();
+                break;
+            case 'all':
+                $controllerObject->all();
+                break;
             default:
                 echo 'Action Sản phẩm không tồn tại';
                 break;
@@ -372,7 +377,82 @@ switch ($controller) {
 
         break;
 
-    //
+    // giỏ hàng
+    case 'giohang':
+
+        require_once __DIR__ . '/App/Controllers/GioHangController.php';
+
+        $controllerObject = new GioHangController();
+
+        switch ($action) {
+
+            case 'index':
+                $controllerObject->index();
+                break;
+
+            case 'add':
+                $controllerObject->add();
+                break;
+
+            case 'updateQuantity':
+                $controllerObject->updateQuantity();
+                break;
+
+            case 'delete':
+                $controllerObject->delete();
+                break;
+
+            default:
+                echo 'Action giỏ hàng không tồn tại';
+                break;
+        }
+
+        break;
+    // ĐỊA CHỈ KHÁCH HÀNG
+    case 'diachi':
+
+        require_once __DIR__ . '/App/Controllers/DiaChiController.php';
+
+        $controllerObject = new DiaChiController();
+
+        switch ($action) {
+
+            case 'index':
+                $controllerObject->index();
+                break;
+
+            case 'create':
+                $controllerObject->create();
+                break;
+
+            case 'store':
+                $controllerObject->store();
+                break;
+
+            case 'edit':
+                $controllerObject->edit();
+                break;
+
+            case 'update':
+                $controllerObject->update();
+                break;
+
+            case 'setDefault':
+                $controllerObject->setDefault();
+                break;
+
+            case 'delete':
+                $controllerObject->delete();
+                break;
+
+            default:
+                echo 'Action địa chỉ không tồn tại: ' . htmlspecialchars($action);
+                break;
+        }
+
+        break;
+
+    // trang chủ 
     case 'home':
         require_once __DIR__ . '/App/Controllers/HomeController.php';
 
@@ -414,6 +494,46 @@ switch ($controller) {
 
             default:
                 echo 'Action Đơn hàng không tồn tại';
+                break;
+        }
+
+        break;
+    // chatbox
+    case 'chatbox':
+        require_once __DIR__ . '/App/Controllers/ChatboxController.php';
+
+        $controllerObject = new ChatboxController();
+
+        switch ($action) {
+            case 'send':
+                $controllerObject->send();
+                break;
+
+            default:
+                echo 'Action chatbox không tồn tại';
+                break;
+        }
+
+        break;
+    // ĐẶT HÀNG
+    case 'dathang':
+
+        require_once __DIR__ . '/App/Controllers/DatHangController.php';
+
+        $controllerObject = new DatHangController();
+
+        switch ($action) {
+
+            case 'index':
+                $controllerObject->index();
+                break;
+
+            case 'store':
+                $controllerObject->store();
+                break;
+
+            default:
+                echo 'Action đặt hàng không tồn tại';
                 break;
         }
 

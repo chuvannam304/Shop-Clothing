@@ -13,8 +13,8 @@
 </head>
 
 <body class="profile-page">
-
-    <div class="container-fluid profile-wrapper">
+    <?php require __DIR__ . '/../home/header.php'; ?>
+    <div class="container profile-wrapper">
         <div class="row">
             <div class="col-lg-2 col-md-3">
                 <?php require __DIR__ . '/menu.php'; ?>
@@ -149,6 +149,7 @@
         </div>
     </div>
 
+    <?php require __DIR__ . '/../home/footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
